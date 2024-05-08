@@ -20,7 +20,7 @@ export default function Header({ children, className }: HeaderProps) {
 
   const handleLogout = async (): Promise<void> => {
     try {
-      await axios.get("http://localhost:5000/api/auth/logout");
+      await axios.get("https://loop-server.onrender.com/api/auth/logout");
       setUserLogged(false);
       Cookie.remove("token");
       toast.success("User logged out successfully");

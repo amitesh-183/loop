@@ -45,7 +45,7 @@ const Register = () => {
       }
       // Perform sign up logic...
       await axios.post<void>(
-        "http://localhost:5000/api/auth/register",
+        "https://loop-server.onrender.com/api/auth/register",
         formData
       );
       toast.success("Registration successful!");

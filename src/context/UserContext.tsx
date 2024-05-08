@@ -23,13 +23,13 @@ interface UserProviderProps {
 export const UserProvider = ({ children }: UserProviderProps) => {
   const [userLogged, setUserLogged] = useState<boolean>(false);
 
-  const token = Cookies.get("token");
   useEffect(() => {
+    const token = Cookies.get("token");
     if (token) {
       setUserLogged(true);
     }
     setUserLogged(false);
-  }, [token]);
+  }, []);
 
   return (
     <UserContext.Provider value={{ userLogged, setUserLogged }}>

@@ -8,7 +8,10 @@ interface BoxProps {
 export default function Box({ children, className }: BoxProps) {
   return (
     <div
-      className={twMerge(`bg-neutral-700 rounded-lg h-fit w-full`, className)}
+      className={twMerge(
+        `bg-gradient-to-b from-purple-800/30 to-neutral-950 rounded-lg h-fit w-full`,
+        className
+      )}
     >
       {children}
     </div>

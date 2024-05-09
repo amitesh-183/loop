@@ -63,12 +63,14 @@ const Register = () => {
 
   return (
     <>
-      <div className="w-full">
+      <div className="w-full h-screen">
         <Navbar />
-        <div className="h-screen pt-8 bg-[url('./assets/images/loginBg.jpg')] bg-cover">
-          <div className="max-w-xl mx-auto py-20 px-20 bg-[#67656536] shadow-[0px_2px_5px_#ffffff91] filter backdrop-blur-[6px] rounded-xl">
+        <div className="h-full pt-8 bg-[url('./assets/images/loginBg.jpg')] bg-cover">
+          <div className="lg:max-w-3xl sm:max-w-lg  max-w-[90%] mx-auto md:py-20 py-16 md:px-20 px-4 bg-[#67656536] shadow-[0px_2px_5px_#ffffff91] filter backdrop-blur-[6px] rounded-xl">
             <header className="text-center">
-              <h2 className="font-bold text-4xl text-white">Join the Party</h2>
+              <h2 className="font-bold md:text-4xl text-3xl text-white">
+                Join the Party
+              </h2>
               <p className="text-gray-100">Where Music Finds you</p>
             </header>
             <form
@@ -108,7 +110,7 @@ const Register = () => {
                 placeholder="Confirm Password"
               />
               <div className="flex justify-between text-sm gap-16">
-                <p>
+                <p className="flex items-center gap-2">
                   <input type="checkbox" />
                   Terms
                 </p>

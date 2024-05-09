@@ -14,7 +14,7 @@ export default function RightBar() {
             : "h-screen bg-black px-2 overflow-y-auto py-2"
         }
       >
-        <Box className="h-full text-black bg-[#FFCA6E] py-2 overflow-y-auto ">
+        <Box className="h-full text-black bg-gradient-to-b from-purple-900 via-purple-400 to-purple-800 py-2 overflow-y-auto ">
           <div className="flex gap-x-2">
             <button onClick={() => setOpen(!open)}>
               {open ? (

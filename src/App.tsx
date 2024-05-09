@@ -13,6 +13,7 @@ const Home = lazy(() => import("./pages/Home.tsx"));
 // import Sidebar from "./components/sidebar.tsx";
 // import RightBar from "./components/RightBar.tsx";
 import Loading from "./pages/Loading.tsx";
+import Podcast from "./pages/Podcast.tsx";
 // import Footer from "./components/Footer.tsx";
 // import Navbar from "./components/Navbar.tsx";
 
@@ -29,6 +30,7 @@ const App = () => {
               <Route path="/register" element={<Register />} />
               <Route path="/phone" element={<Phone />} />
               <Route path="/forgot-password" element={<Forgot />} />
+              <Route path="/podcast" element={<Podcast />} />
             </Routes>
           </Router>
         </Suspense>

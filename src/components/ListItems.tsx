@@ -56,13 +56,13 @@ export default function ListItems() {
   return (
     <>
       <div
-        className={`flex flex-wrap gap-4 my-2 ${
-          selectedSong && userLogged ? "h-[68vh]" : "max-h-[80vh]"
+        className={`grid 2xl:grid-cols-7 xl:grid-cols-5 lg:grid-cols-4 grid-cols-2 justify-items-center gap-4 my-2 ${
+          selectedSong && userLogged ? "h-[70vh]" : "max-h-[80vh]"
         } overflow-y-scroll`}
       >
         {dummyData.map((item, index) => (
           <div key={item.music_id} onClick={() => handleSongClick(index)}>
-            <div className="py-3 hover:bg-zinc-800 bg-opacity-20 cursor-pointer rounded-lg duration-300 ease-linear px-4">
+            <div className="py-3 hover:bg-gradient-to-b from-purple-700/20 to-zinc-700/10 cursor-pointer rounded-lg duration-300 ease-linear px-4">
               <div className=" relative">
                 <img
                   src={item.poster}
@@ -70,8 +70,12 @@ export default function ListItems() {
                   alt="img"
                 />
               </div>
-              <p className=" font-semibold text-xl">{item.music_name}</p>
-              <p className=" text-base text-gray-500">{item.artist}</p>
+              <p className=" font-semibold md:text-xl sm:text-lg mt-2 text-base">
+                {item.music_name}
+              </p>
+              <p className=" md:text-base sm:text-sm text-xs text-gray-500">
+                {item.artist}
+              </p>
             </div>
           </div>
         ))}

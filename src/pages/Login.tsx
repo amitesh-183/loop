@@ -52,12 +52,14 @@ const Login = () => {
 
   return (
     <>
-      <div className="w-full">
+      <div className="w-full h-screen">
         <Navbar />
-        <div className="h-screen pt-20 bg-[url('./assets/images/loginBg.jpg')] bg-cover">
-          <div className="max-w-xl mx-auto py-20 px-20 bg-[#67656536] shadow-[0px_2px_5px_#ffffff91] filter backdrop-blur-[6px] rounded-xl">
+        <div className="h-full md:py-24 py-8 bg-[url('./assets/images/loginBg.jpg')] bg-cover">
+          <div className="md:max-w-2xl sm:max-w-xl max-w-[90%] mx-auto md:py-20 py-16 md:px-20 sm:px-10 px-6 bg-[#67656536] shadow-[0px_2px_5px_#ffffff91] filter backdrop-blur-[6px] rounded-xl">
             <header className="text-center">
-              <h2 className="font-bold text-4xl text-white">Welcome Back</h2>
+              <h2 className="font-bold lg:text-4xl text-2xl text-white">
+                Welcome Back
+              </h2>
               <p className="text-gray-100">your favorite spot</p>
             </header>
             <form

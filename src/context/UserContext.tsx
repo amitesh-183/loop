@@ -22,7 +22,6 @@ interface UserProviderProps {
 
 export const UserProvider = ({ children }: UserProviderProps) => {
   const [userLogged, setUserLogged] = useState<boolean>(false);
-
   useEffect(() => {
     const token = Cookies.get("token");
     if (token) {

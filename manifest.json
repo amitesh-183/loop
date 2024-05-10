@@ -45,6 +45,11 @@
       "sizes": "144x144",
       "type": "image/png",
       "purpose": "maskable"
+    },
+    {
+      "src": "/src/assets/images/loop.png",
+      "type": "image/png",
+      "sizes": "any"
     }
   ],
   "theme_color": "#000000",

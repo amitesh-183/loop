@@ -37,6 +37,7 @@
     },
     {
       "src": "/src/assets/images/loop-144x144.png",
+      "sizes": "144x144",
       "purpose": "any"
     }
   ],

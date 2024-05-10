@@ -44,13 +44,13 @@ export default function Header({ children, className }: HeaderProps) {
       toast.success("User logged out successfully");
       navigate("/");
     } catch (error) {
-      console.log(error);
+      // console.log(error);
       toast.error("Something went wrong");
     }
   };
 
   useEffect(() => {
-    console.log(userLogged);
+    // console.log(userLogged);
   }, [userLogged]);
 
   return (

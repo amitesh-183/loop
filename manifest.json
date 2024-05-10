@@ -37,10 +37,7 @@
     },
     {
       "src": "/src/assets/images/loop-144x144.png",
-      "sizes": "any"
-    },
-    {
-      "src": "/src/assets/images/loop-144x144.png"
+      "purpose": "any"
     }
   ],
   "theme_color": "#000000",

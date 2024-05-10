@@ -66,7 +66,7 @@ export default function ListItems() {
               <div className=" relative">
                 <img
                   src={item.poster}
-                  className="md:w-[200px] md:h-[200px] w-[200px] h-[160px] object-cover rounded-lg"
+                  className="md:w-[200px] md:h-[200px] w-[200px] h-[200px] object-cover rounded-lg"
                   alt="img"
                 />
               </div>

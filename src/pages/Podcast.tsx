@@ -1,5 +1,5 @@
 import Sidebar from "../components/sidebar";
-import playlist from "../assets/images/playlist.png";
+import podcastTop from "../assets/images/podcast-top.png";
 import playlistIcon from "../assets/images/playlist-icon.png";
 
 const Podcast = () => {
@@ -9,16 +9,18 @@ const Podcast = () => {
       <div className=" bg-gradient-to-b from-purple-600/20 to-zinc-900 w-full mr-2 my-2">
         <div className=" bg-white/10 rounded-lg px-10 py-3 backdrop-blur m-4 flex justify-between items-center">
           <div>
-            <h2 className=" font-bold text-3xl">Enjoy your Playlist</h2>
+            <h2 className=" font-bold text-3xl">
+              Enjoy Latest Podcast Across Platforms
+            </h2>
             <p className=" text-gray-50/40 mt-3 text-xl">
-              Best Playlist listed here
+              Latest Podcast at your ears
             </p>
           </div>
           <div>
-            <img src={playlist} alt="" className=" w-52" />
+            <img src={podcastTop} alt="" className=" w-52" />
           </div>
         </div>
-        <h4 className=" px-4 py-3 text-5xl">Playlists</h4>
+        <h4 className=" px-4 py-3 text-5xl">Podcasts</h4>
         <div className=" flex flex-start">
           <div className=" bg-white/10 rounded-lg px-10 py-3 backdrop-blur m-4 text-center">
             <img src={playlistIcon} alt="" className=" w-52" />

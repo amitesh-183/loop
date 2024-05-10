@@ -21,13 +21,18 @@ interface UserProviderProps {
 }
 
 export const UserProvider = ({ children }: UserProviderProps) => {
-  const [userLogged, setUserLogged] = useState<boolean>(false);
+  const [userLogged, setUserLogged] = useState<boolean>(() => {
+    const token = Cookies.get("token");
+    return !!token; // Convert token existence to boolean
+  });
+
   useEffect(() => {
+    // No need to set userLogged to false initially
     const token = Cookies.get("token");
     if (token) {
       setUserLogged(true);
     }
-    setUserLogged(false);
+    // setUserLogged(false); // This line resets the userLogged state immediately after setting it
   }, []);
 
   return (
@@ -36,4 +41,5 @@ export const UserProvider = ({ children }: UserProviderProps) => {
     </UserContext.Provider>
   );
 };
+
 export const useAuth = () => useContext(UserContext);

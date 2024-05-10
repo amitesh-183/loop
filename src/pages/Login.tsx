@@ -1,10 +1,9 @@
+import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import axios from "axios";
 import toast from "react-hot-toast";
-import { useState } from "react";
-// import { UserContext } from "../context/UserContext";
 import Cookies from "js-cookie";
 import { useAuth } from "../context/UserContext";
 
@@ -20,6 +19,7 @@ const Login = () => {
     identifier: "",
     password: "",
   });
+  const [loading, setLoading] = useState<boolean>(false); // State to track loading state
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
@@ -28,9 +28,11 @@ const Login = () => {
 
   const handleLogin = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    setLoading(true); // Set loading state to true when login button is clicked
     try {
       if (!formData.identifier || !formData.password) {
         toast.error("Please enter your username and password to login.");
+        setLoading(false); // Reset loading state
         return;
       }
 
@@ -39,15 +41,15 @@ const Login = () => {
         formData
       );
       const { token } = response.data;
-      Cookies.set("token", token, { expires: 30, secure: true }); // Optionally set token cookie
-      setUserLogged(true); // Update authentication state to indicate user is logged in
-      toast.success("Logged in successfully!"); // Display success toast message
-      navigate("/"); // Redirect user to dashboard upon successful login
+      Cookies.set("token", token, { expires: 30, secure: true });
+      setUserLogged(true);
+      toast.success("Logged in successfully!");
+      navigate("/");
     } catch (error) {
       console.error("Login error:", error);
-      // Handle login error
       toast.error("Login failed! Please try again.");
     }
+    setLoading(false); // Reset loading state after login attempt
   };
 
   return (
@@ -94,9 +96,13 @@ const Login = () => {
               <div className=" flex justify-center">
                 <button
                   type="submit"
-                  className="bg-teal-500 px-4 mt-3 py-3 w-40 rounded-lg hover:bg-teal-600 duration-300"
+                  className={`bg-teal-500 px-4 mt-3 py-3 w-40 rounded-lg hover:bg-teal-600 duration-300 ${
+                    loading ? "opacity-50 cursor-not-allowed" : "" // Disable button and show loading state if loading is true
+                  }`}
+                  disabled={loading} // Disable button if loading is true
                 >
-                  Log in
+                  {loading ? "Loading..." : "Log in"}{" "}
+                  {/* Show loading text when loading, else show "Log in" */}
                 </button>
               </div>
             </form>

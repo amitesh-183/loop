@@ -57,16 +57,16 @@ export default function ListItems() {
     <>
       <div
         className={`grid 2xl:grid-cols-7 xl:grid-cols-5 lg:grid-cols-4 grid-cols-2 justify-items-center gap-4 my-2 ${
-          selectedSong && userLogged ? "h-[70vh]" : "max-h-[80vh]"
+          selectedSong && userLogged ? "h-[68vh]" : "max-h-[80vh]"
         } overflow-y-scroll`}
       >
         {dummyData.map((item, index) => (
           <div key={item.music_id} onClick={() => handleSongClick(index)}>
-            <div className="py-3 hover:bg-gradient-to-b from-purple-700/20 to-zinc-700/10 cursor-pointer rounded-lg duration-300 ease-linear px-4">
+            <div className="py-3 hover:bg-gradient-to-b from-purple-700/20 to-zinc-700/10 cursor-pointer rounded-lg duration-300 ease-linear md:px-4 px-1">
               <div className=" relative">
                 <img
                   src={item.poster}
-                  className="w-[200px] h-[200px] object-cover rounded-lg"
+                  className="md:w-[200px] md:h-[200px] w-[200px] h-[160px] object-cover rounded-lg"
                   alt="img"
                 />
               </div>

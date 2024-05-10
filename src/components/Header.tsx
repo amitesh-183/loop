@@ -1,3 +1,8 @@
+import { CgMenuRight } from "react-icons/cg";
+import { FaSearch } from "react-icons/fa";
+import { MdAccountCircle } from "react-icons/md";
+import { MdTravelExplore } from "react-icons/md";
+import { FaMusic } from "react-icons/fa";
 import { CgProfile } from "react-icons/cg";
 import { AiOutlineSetting } from "react-icons/ai";
 import { MdLightMode } from "react-icons/md";
@@ -20,6 +25,7 @@ import axios from "axios";
 import Cookie from "js-cookie";
 import toast from "react-hot-toast";
 import { useEffect } from "react";
+import LoopLogo from "./LoopLogo";
 
 interface HeaderProps {
   children: React.ReactNode;
@@ -49,7 +55,7 @@ export default function Header({ children, className }: HeaderProps) {
   }, [userLogged]);
 
   return (
-    <div className={twMerge(`h-fit  p-6`, className)}>
+    <div className={twMerge(`h-fit  md:p-6 px-4`, className)}>
       <div className="w-full mb-4 flex items-center justify-between">
         <div className="hidden lg:flex gap-x-2 w-[30%] text-black items-center relative">
           <input
@@ -73,25 +79,29 @@ export default function Header({ children, className }: HeaderProps) {
             Music
           </Link>
         </div>
-        <div className="flex md:hidden gap-x-2 items-center">
-          <button className="rounded-full p-2 bg-white justify-center items-center hover:opacity-75 transition">
-            <HiHome className="text-black" size={25} />
+        <div className="md:hidden">
+          <LoopLogo />
+        </div>
+        <div className="flex md:hidden fixed bottom-0 gap-x-2 py-2 justify-center z-10 mx-auto bg-zinc-900 w-full left-0 items-center">
+          <button className="rounded-full p-2  justify-center items-center hover:opacity-75 transition">
+            <HiHome className=" w-8 h-5" />
           </button>
-          <button className="rounded-full p-2 bg-white justify-center items-center hover:opacity-75 transition">
-            <BiSearch className=" text-black" size={25} />
+          <button className="rounded-full p-2  justify-center items-center hover:opacity-75 transition">
+            <FaSearch className="  w-8 h-4" />
+          </button>
+          <button className="rounded-full p-2  justify-center items-center hover:opacity-75 transition">
+            <FaMusic className="  w-8 h-4" />
+          </button>
+          <button className="rounded-full p-2  justify-center items-center hover:opacity-75 transition">
+            <MdTravelExplore className="  w-8 h-5" />
+          </button>
+          <button className="rounded-full p-2  justify-center items-center hover:opacity-75 transition">
+            <MdAccountCircle className="  w-8 h-5" />
           </button>
         </div>
         {userLogged && token ? (
           <>
-            {/* <div>
-              <Button
-                onClick={handleLogout}
-                className="bg-transparent text-neutral-300 font-medium"
-              >
-                Logout
-              </Button>
-            </div> */}
-            <div className=" w-52 text-right">
+            <div className=" w-52 text-right md:block hidden">
               <Menu>
                 <MenuButton className="inline-flex items-center gap-2 bg-gray-800/10 p-1 text-sm/6 rounded-full font-semibold text-white shadow-inner shadow-white/10 focus:outline-none data-[hover]:bg-gray-700/20 data-[open]:bg-gray-700/20 data-[focus]:outline-1 data-[focus]:outline-white">
                   <img
@@ -147,11 +157,14 @@ export default function Header({ children, className }: HeaderProps) {
                 </Transition>
               </Menu>
             </div>
+            <div className="md:hidden block">
+              <CgMenuRight className="text-3xl" />
+            </div>
           </>
         ) : (
           <div className="flex justify-between items-center gap-x-4">
             <>
-              <div>
+              <div className="md:block hidden">
                 <Link to="/register">
                   <Button
                     onClick={() => {}}

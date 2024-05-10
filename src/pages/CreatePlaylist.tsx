@@ -2,16 +2,16 @@ import Sidebar from "../components/sidebar";
 import playlist from "../assets/images/playlist.png";
 import playlistIcon from "../assets/images/playlist-icon.png";
 
-const Podcast = () => {
+const CreatePlaylist = () => {
   return (
     <>
       <Sidebar />
       <div className=" bg-gradient-to-b from-purple-600/20 to-zinc-900 w-full mr-2 my-2">
         <div className=" bg-white/10 rounded-lg px-10 py-3 backdrop-blur m-4 flex justify-between items-center">
           <div>
-            <h2 className=" font-bold text-3xl">Enjoy your Playlist</h2>
+            <h2 className=" font-bold text-3xl">Create your Playlist</h2>
             <p className=" text-gray-50/40 mt-3 text-xl">
-              Best Playlist listed here
+              Create Best Playlist Ever!
             </p>
           </div>
           <div>
@@ -38,4 +38,4 @@ const Podcast = () => {
   );
 };
 
-export default Podcast;
+export default CreatePlaylist;

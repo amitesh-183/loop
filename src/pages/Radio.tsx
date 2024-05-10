@@ -2,7 +2,7 @@ import Sidebar from "../components/sidebar";
 import playlist from "../assets/images/playlist.png";
 import playlistIcon from "../assets/images/playlist-icon.png";
 
-const Podcast = () => {
+const Radio = () => {
   return (
     <>
       <Sidebar />
@@ -38,4 +38,4 @@ const Podcast = () => {
   );
 };
 
-export default Podcast;
+export default Radio;

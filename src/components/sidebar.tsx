@@ -25,7 +25,7 @@ export default function Sidebar() {
         },
         {
           title: "New Releases",
-          redirect: "/music",
+          redirect: "/new-releases",
           icon: <FaMusic />,
         },
       ],
@@ -35,7 +35,7 @@ export default function Sidebar() {
       subparts: [
         {
           title: "Loop Originals",
-          redirect: "/playlist",
+          redirect: "/loop-originals",
           icon: <SiLoop />,
         },
         {
@@ -45,17 +45,17 @@ export default function Sidebar() {
         },
         {
           title: "Liked Songs",
-          redirect: "/liked",
+          redirect: "/liked-songs",
           icon: <FaHeart />,
         },
         {
           title: "Create Playlist",
-          redirect: "/playlist",
+          redirect: "/create-playlist",
           icon: <LuListPlus />,
         },
         {
           title: "Local Audio",
-          redirect: "/local",
+          redirect: "/local-music",
           icon: <FaFolder />,
         },
       ],

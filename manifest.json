@@ -14,11 +14,6 @@
       "type": "image/png"
     },
     {
-      "src": "/src/assets/images/loop-144x144.png",
-      "sizes": "144x144",
-      "type": "image/png"
-    },
-    {
       "src": "/src/assets/images/favicon-32x32.png",
       "sizes": "32x32",
       "type": "image/png"
@@ -42,14 +37,10 @@
     },
     {
       "src": "/src/assets/images/loop-144x144.png",
-      "sizes": "144x144",
-      "type": "image/png",
-      "purpose": "maskable"
+      "sizes": "any"
     },
     {
-      "src": "/src/assets/images/loop.png",
-      "type": "image/png",
-      "sizes": "any"
+      "src": "/src/assets/images/loop-144x144.png"
     }
   ],
   "theme_color": "#000000",

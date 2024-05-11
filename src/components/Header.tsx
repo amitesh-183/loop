@@ -1,13 +1,9 @@
 import { CgMenuRight } from "react-icons/cg";
-import { FaSearch } from "react-icons/fa";
-import { MdTravelExplore } from "react-icons/md";
-import { FaMusic } from "react-icons/fa";
 import { CgProfile } from "react-icons/cg";
 import { AiOutlineSetting } from "react-icons/ai";
 import { MdLightMode } from "react-icons/md";
 import { HiOutlineLogout } from "react-icons/hi";
 import { BiSearch } from "react-icons/bi";
-import { HiHome } from "react-icons/hi";
 import { twMerge } from "tailwind-merge";
 import {
   Menu,

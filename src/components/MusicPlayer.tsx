@@ -157,7 +157,7 @@ const MusicPlayer: React.FC<MusicPlayerProps> = ({
           </div>
         </div>
       ) : (
-        <div className="music-player absolute md:bottom-0 bottom-10 w-full left-0">
+        <div className="music-player absolute bottom-0 w-full left-0">
           <div className=" relative">
             <div className="absolute z-20 md:h-2 h-1 w-full rounded-lg bg-gray-400 bg-opacity-5 text-center text-white text-xs">
               {/* {formatTime(currentTime)} / {formatTime(duration)} */}

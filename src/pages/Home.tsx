@@ -5,6 +5,7 @@ import RightBar from "../components/RightBar";
 import Sidebar from "../components/sidebar";
 import ReminderModal from "../components/ReminderModal";
 import { useAuth } from "../context/UserContext";
+// import Explore from "../components/Music/Explore";
 
 export default function Home() {
   const [isOpen, setIsOpen] = useState(false);

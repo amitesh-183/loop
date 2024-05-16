@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import dummyData from "../data/DummyData";
 import MusicPlayer from "./MusicPlayer";
 import { useAuth } from "../context/UserContext";
+// import Explore from "./Music/Explore";
 
 // Define the type for a song
 interface Song {
@@ -55,6 +56,8 @@ export default function ListItems() {
 
   return (
     <>
+      {/* <Explore /> */}
+      <h4>Music</h4>
       <div
         className={`grid 2xl:grid-cols-7 xl:grid-cols-5 lg:grid-cols-4 grid-cols-2 justify-items-center gap-4 my-2 ${
           selectedSong && userLogged ? "h-[68vh]" : "max-h-[80vh]"

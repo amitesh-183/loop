@@ -2,6 +2,7 @@ import { BsFillFileEarmarkMusicFill } from "react-icons/bs";
 import Sidebar from "../components/sidebar";
 import local from "../assets/images/local-indicate.png";
 import { useState } from "react";
+import { GrClose } from "react-icons/gr";
 // import MusicPlayer from "../components/MusicPlayer";
 
 const Offline = () => {
@@ -49,27 +50,84 @@ const Offline = () => {
           </div>
         </div>
         <div className=" bg-white/10 rounded-lg px-10 py-3 backdrop-blur m-4">
-          <h2 className=" text-4xl font-black text-center">
-            Add or Drop Your Music Here
-          </h2>
-          <div className="flex relative justify-center items-center h-[200px] mx-auto my-4 max-w-xl border rounded-lg border-dashed px-4">
-            <input
-              type="file"
-              className=" absolute opacity-0 inset-0 max-w-xl"
-              onChange={handleFileChange}
-            />
-            <BsFillFileEarmarkMusicFill className=" text-6xl fill-purple-400/40" />
+          <div className=" flex justify-between gap-4">
+            <div className=" w-1/2">
+              <h2 className=" text-2xl font-black">
+                Add Your Music Details Here
+              </h2>
+              <div className="py-4">
+                <div className="flex justify-between">
+                  <div className="flex flex-col gap-2 w-1/2 mr-2">
+                    <label htmlFor="name">Title</label>
+                    <input
+                      type="text"
+                      className="px-4 py-1 bg-white/5 rounded-lg"
+                    />
+                  </div>
+                  <div className="flex flex-col gap-2 w-1/2 mr-2">
+                    <label htmlFor="name">Artists</label>
+                    <input
+                      type="text"
+                      className="px-4 py-1 bg-white/5 rounded-lg"
+                    />
+                  </div>
+                </div>
+                <div className="flex justify-between mt-2">
+                  <div className="flex flex-col gap-2 w-1/2 mr-2">
+                    <label htmlFor="genre">Genre</label>
+                    <input
+                      type="text"
+                      className="px-4 py-1 bg-white/5 rounded-lg"
+                    />
+                  </div>
+                  <div className="flex flex-col gap-2 w-1/2 mr-2">
+                    <label htmlFor="tags">Tags</label>
+                    <input
+                      type="text"
+                      className="px-4 py-1 rounded-lg bg-white/5"
+                    />
+                  </div>
+                </div>
+                <div className="flex flex-col gap-2 mr-2 mt-2">
+                  <label htmlFor="name">Poster Image</label>
+                  <div className="flex justify-between items-center bg-white/5 px-2 py-1 rounded-lg">
+                    <em className="text-ellipsis">Image src....</em>
+                    <GrClose className="hover:text-purple-500" />
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div className="w-1/2">
+              <h2 className=" text-2xl font-black text-center">
+                Add or Drop Your Music Here
+              </h2>
+              <div className="flex relative justify-center items-center h-[200px] mx-auto my-4 max-w-xl border rounded-lg border-dashed px-4">
+                <input
+                  type="file"
+                  className=" absolute opacity-0 inset-0 max-w-xl"
+                  onChange={handleFileChange}
+                />
+                <BsFillFileEarmarkMusicFill className=" text-6xl fill-purple-400/40" />
+              </div>
+              <div className=" flex justify-center">
+                <label htmlFor="music">
+                  <input
+                    type="file"
+                    name="music"
+                    id="music"
+                    className="hidden"
+                  />
+                </label>
+              </div>
+            </div>
           </div>
-          <div className=" flex justify-center">
-            <label htmlFor="music">
-              <input type="file" name="music" id="music" className="hidden" />
-              <button
-                onClick={handleUpload}
-                className="bg-purple-600 text-white py-2 px-20 rounded-lg"
-              >
-                Add Music
-              </button>
-            </label>
+          <div className="flex justify-center">
+            <button
+              onClick={handleUpload}
+              className="bg-purple-600 text-white py-2 px-20 rounded-lg"
+            >
+              Add Music
+            </button>
           </div>
         </div>
         <div className="flex items-center justify-between w-full px-6">

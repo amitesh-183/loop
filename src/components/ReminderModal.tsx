@@ -17,6 +17,9 @@ type ReminderModalProps = {
 const ReminderModal: React.FC<ReminderModalProps> = ({ isOpen, close }) => {
   return (
     <>
+      {isOpen && (
+        <div className="absolute inset-0 z-10 bg-black/20 backdrop-blur-[1px]"></div>
+      )}
       <Transition appear show={isOpen}>
         <Dialog
           as="div"
@@ -26,7 +29,7 @@ const ReminderModal: React.FC<ReminderModalProps> = ({ isOpen, close }) => {
           <div className="fixed inset-0 z-10 w-screen overflow-y-auto">
             <div className="flex min-h-full items-center justify-center p-4">
               <TransitionChild
-                enter="ease-out duration-300"
+                enter="ease-out duration-500"
                 enterFrom="opacity-0 transform-[scale(95%)]"
                 enterTo="opacity-100 transform-[scale(100%)]"
                 leave="ease-in duration-200"

@@ -1,7 +1,7 @@
 {
   "name": "Loop Music Streaming Platform",
   "short_name": "Loop",
-  "start_url": "./",
+  "start_url": "/",
   "icons": [
     {
       "src": "/android-chrome-192x192.png",
@@ -39,7 +39,7 @@
   "theme_color": "#000000",
   "background_color": "#000000",
   "display": "standalone",
-  "scope": "./",
+  "scope": "/",
   "lang": "en",
   "orientation": "any",
   "description": "Your description here.",

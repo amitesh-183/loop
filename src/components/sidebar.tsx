@@ -8,7 +8,11 @@ import { MdPlaylistPlay } from "react-icons/md";
 import LoopLogo from "./LoopLogo";
 import { Link } from "react-router-dom";
 
-export default function Sidebar() {
+interface sidebarProps {
+  hidden?: string;
+}
+
+export default function Sidebar({ hidden }: sidebarProps) {
   const sideBarData = [
     {
       title: "Discover",
@@ -64,7 +68,11 @@ export default function Sidebar() {
 
   return (
     <div className="flex h-full">
-      <div className=" min-w-[270px] hidden w-auto md:flex max-w-[600px]  h-screen flex-col  gap-y-2 bg-black p-2">
+      <div
+        className={` min-w-[270px] w-auto ${
+          hidden ? hidden : "hidden bg-black p-2"
+        }  md:flex max-w-[600px]  h-screen flex-col  gap-y-2`}
+      >
         <Box className="overflow-y-auto h-full">
           {/* <Link to={"/"} className="flex justify-center items-center gap-2">
             <div className="text-3xl py-6 font-bold text-center">L</div>

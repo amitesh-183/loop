@@ -1,6 +1,6 @@
 // import { AudioFile } from "../types/files";
 import music from "../assets/songs/Tu Ne Jo Na Kaha.mp3";
-import music2 from "../assets/songs/Hai Dil Ye Mera.mp3";
+// import music2 from "../assets/songs/Hai Dil Ye Mera.mp3";
 import music3 from "../assets/songs/Phir Suna.mp3";
 import music4 from "../assets/songs/Maari Thara Local.mp3";
 import music5 from "../assets/songs/Binte Dil.mp3";
@@ -27,7 +27,7 @@ import poster10 from "../assets/images/songs/phir-suna.webp";
 import poster11 from "../assets/images/songs/satranga.webp";
 import poster12 from "../assets/images/songs/marri.webp";
 import poster13 from "../assets/images/songs/herriye.webp";
-import poster14 from "../assets/images/songs/hate-story.webp";
+// import poster14 from "../assets/images/songs/hate-story.webp";
 
 const dummyData = [
   {
@@ -38,14 +38,14 @@ const dummyData = [
     music_file: music,
     music_id: 1,
   },
-  {
-    singer: "Arijit Singh",
-    artist: "Arijit Singh",
-    poster: poster14,
-    music_name: "Hain Dil Ye Mera",
-    music_file: music2,
-    music_id: 2,
-  },
+  // {
+  //   singer: "Arijit Singh",
+  //   artist: "Arijit Singh",
+  //   poster: poster14,
+  //   music_name: "Hain Dil Ye Mera",
+  //   music_file: music2,
+  //   music_id: 2,
+  // },
   {
     singer: "Gajendra Verma",
     artist: "Gajendra  Verma",

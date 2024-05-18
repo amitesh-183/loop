@@ -230,17 +230,17 @@ export default function Header({ className }: HeaderProps) {
 
           {userLogged && token ? (
             <>
-              <div className=" w-52 text-right md:block hidden">
+              <div className="text-right md:block hidden">
                 <Menu>
-                  <MenuButton className="inline-flex items-center gap-2 bg-gray-800/10 p-1 text-sm/6 rounded-full font-semibold text-white shadow-inner shadow-white/10 focus:outline-none data-[hover]:bg-gray-700/20 data-[open]:bg-gray-700/20 data-[focus]:outline-1 data-[focus]:outline-white">
+                  <MenuButton className="inline-flex items-center gap-2 bg-gray-800/10 p-1 mr-6 text-sm/6 rounded-full font-semibold text-white shadow-inner shadow-white/10 focus:outline-none data-[hover]:bg-gray-700/20 data-[open]:bg-gray-700/20 data-[focus]:outline-1 data-[focus]:outline-white">
                     <img
                       src="https://images.pexels.com/photos/1040880/pexels-photo-1040880.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
                       alt="Profile-Pic"
                       className="w-8 h-8 object-cover rounded-full"
                     />
-                    <div className="">
+                    {/* <div className="">
                       <h3>User..</h3>
-                    </div>
+                    </div> */}
                   </MenuButton>
                   <Transition
                     enter="transition ease-out duration-75"

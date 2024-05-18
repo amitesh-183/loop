@@ -42,3 +42,7 @@ body :root {
 .hide-scroll::-webkit-scrollbar{
   display: none;
 }
+
+.splide__slide{
+  height: 400px;
+}

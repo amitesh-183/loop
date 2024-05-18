@@ -7,6 +7,7 @@ import Modal from "../components/Modal";
 import loopOriginal from "../assets/images/loop-original.webp";
 import { GrClose } from "react-icons/gr";
 import toast from "react-hot-toast";
+import MobileHeader from "../components/MobileHeader";
 
 interface Song {
   songName: string;
@@ -233,7 +234,8 @@ const LoopOriginals: React.FC = () => {
         </form>
       </Modal>
       <div className=" bg-gradient-to-b from-purple-600/20 to-zinc-900 w-full mr-2 my-2">
-        <div className=" bg-white/10 rounded-lg px-10 py-3 backdrop-blur m-4 flex justify-between items-center">
+        <MobileHeader />
+        <div className=" bg-white/10 rounded-lg sm:px-10 px-6 py-3 backdrop-blur m-4 flex justify-between sm:flex-row flex-col gap-4 items-center">
           <div>
             <h2 className=" font-bold text-3xl">Time To be Original</h2>
             <p className=" text-gray-50/40 mt-3 text-xl">
@@ -245,15 +247,15 @@ const LoopOriginals: React.FC = () => {
           </div>
         </div>
         <div className="flex justify-between flex-wrap px-4 py-2 items-center">
-          <h4 className=" text-5xl">Loop Originals</h4>
+          <h4 className=" sm:text-5xl text-4xl">Loop Originals</h4>
           <button
-            className="bg-white text-black px-4 py-2 rounded-lg"
+            className="bg-white text-black px-4 py-2 rounded-lg sm:text-base text-xs"
             onClick={open}
           >
             Add new Song
           </button>
         </div>
-        <div className=" flex flex-start">
+        <div className=" flex flex-start overflow-x-auto">
           <div className=" bg-white/10 rounded-lg px-10 py-3 backdrop-blur m-4 text-center">
             <img src={playlistIcon} alt="" className=" w-52" />
             Playlists

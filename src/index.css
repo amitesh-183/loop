@@ -38,3 +38,7 @@ body :root {
     transform: rotate(360deg);
   }
 }
+
+.hide-scroll::-webkit-scrollbar{
+  display: none;
+}

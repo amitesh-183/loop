@@ -57,7 +57,7 @@ export default function ListItems() {
   return (
     <>
       {/* <Explore /> */}
-      <h4>Music</h4>
+      <h4 className="px-2 font-semibold text-2xl">Music</h4>
       <div
         className={`grid 2xl:grid-cols-7 xl:grid-cols-5 lg:grid-cols-4 grid-cols-2 justify-items-center gap-4 my-2 ${
           selectedSong && userLogged ? "h-[68vh]" : "max-h-[80vh]"
@@ -65,7 +65,7 @@ export default function ListItems() {
       >
         {dummyData.map((item, index) => (
           <div key={item.music_id} onClick={() => handleSongClick(index)}>
-            <div className="py-3 hover:bg-gradient-to-b from-purple-700/20 to-zinc-700/10 cursor-pointer rounded-lg duration-300 ease-linear md:px-4 px-1">
+            <div className="py-3 hover:bg-gradient-to-b from-purple-700/20 to-zinc-700/10 cursor-pointer rounded-lg duration-300 ease-linear md:px-4 px-2">
               <div className=" relative">
                 <img
                   src={item.poster}

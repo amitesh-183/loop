@@ -21,6 +21,8 @@ import CreatePlaylist from "./pages/CreatePlaylist.tsx";
 import Radio from "./pages/Radio.tsx";
 import LoopOriginals from "./pages/LoopOriginals.tsx";
 import NewReleases from "./pages/NewReleases.tsx";
+import Music from "./pages/Music.tsx";
+import Explore from "./pages/Explore.tsx";
 // import Footer from "./components/Footer.tsx";
 // import Navbar from "./components/Navbar.tsx";
 
@@ -45,6 +47,8 @@ const App = () => {
               <Route path="/radio" element={<Radio />} />
               <Route path="/new-releases" element={<NewReleases />} />
               <Route path="/loop-originals" element={<LoopOriginals />} />
+              <Route path="/explore" element={<Explore />} />
+              <Route path="/music" element={<Music />} />
             </Routes>
           </Router>
         </Suspense>

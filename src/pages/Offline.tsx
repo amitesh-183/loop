@@ -3,6 +3,7 @@ import Sidebar from "../components/sidebar";
 import local from "../assets/images/local-indicate.png";
 import { useState } from "react";
 import { GrClose } from "react-icons/gr";
+import MobileHeader from "../components/MobileHeader";
 // import MusicPlayer from "../components/MusicPlayer";
 
 const Offline = () => {
@@ -37,8 +38,9 @@ const Offline = () => {
   return (
     <>
       <Sidebar />
-      <div className=" bg-gradient-to-b from-purple-600/20 to-zinc-900 w-full mr-2 my-2">
-        <div className=" bg-white/10 rounded-lg px-10 py-3 backdrop-blur m-4 flex justify-between items-center">
+      <div className=" bg-gradient-to-b from-purple-600/20 to-zinc-900 w-full mr-2 my-2 rounded-lg max-h-[97vh] overflow-y-scroll">
+        <MobileHeader />
+        <div className=" bg-white/10 rounded-lg sm:px-10 px-6 py-3 backdrop-blur m-4 flex justify-between sm:flex-row flex-col gap-4 items-center">
           <div>
             <h2 className=" font-bold text-3xl">Enjoy your local music</h2>
             <p className=" text-gray-50/40 mt-3 text-xl">
@@ -50,8 +52,8 @@ const Offline = () => {
           </div>
         </div>
         <div className=" bg-white/10 rounded-lg px-10 py-3 backdrop-blur m-4">
-          <div className=" flex justify-between gap-4">
-            <div className=" w-1/2">
+          <div className=" flex justify-between sm:flex-row flex-col gap-4">
+            <div className=" sm:w-1/2 w-full">
               <h2 className=" text-2xl font-black">
                 Add Your Music Details Here
               </h2>
@@ -97,7 +99,7 @@ const Offline = () => {
                 </div>
               </div>
             </div>
-            <div className="w-1/2">
+            <div className="sm:w-1/2 w-full">
               <h2 className=" text-2xl font-black text-center">
                 Add or Drop Your Music Here
               </h2>

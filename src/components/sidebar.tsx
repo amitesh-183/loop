@@ -76,7 +76,7 @@ export default function Sidebar({ hidden }: sidebarProps) {
         <Box className="overflow-y-auto h-full bg-gradient-to-b from-purple-800/30 to-neutral-950 rounded-lg">
           {/* <Link to={"/"} className="flex justify-center items-center gap-2">
             <div className="text-3xl py-6 font-bold text-center">L</div>
-            <img src={loop} alt="loop-logo" className=" w-14" />
+            <img loading="lazy" src={loop} alt="loop-logo" className=" w-14" />
 
             <div className="text-3xl py-6 font-bold text-center">P</div>
           </Link> */}

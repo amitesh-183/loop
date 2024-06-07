@@ -243,7 +243,7 @@ const LoopOriginals: React.FC = () => {
             </p>
           </div>
           <div>
-            <img src={original} alt="" className=" w-52" />
+            <img loading="lazy" src={original} alt="" className=" w-52" />
           </div>
         </div>
         <div className="flex justify-between flex-wrap px-4 py-2 items-center">
@@ -257,15 +257,15 @@ const LoopOriginals: React.FC = () => {
         </div>
         <div className=" flex flex-start overflow-x-auto">
           <div className=" bg-white/10 rounded-lg px-10 py-3 backdrop-blur m-4 text-center">
-            <img src={playlistIcon} alt="" className=" w-52" />
+            <img loading="lazy" src={playlistIcon} alt="" className=" w-52" />
             Playlists
           </div>
           <div className=" bg-white/10 rounded-lg px-10 py-3 backdrop-blur m-4 text-center">
-            <img src={playlistIcon} alt="" className=" w-52" />
+            <img loading="lazy" src={playlistIcon} alt="" className=" w-52" />
             Playlists
           </div>
           <div className=" bg-white/10 rounded-lg px-10 py-3 backdrop-blur m-4 text-center">
-            <img src={playlistIcon} alt="" className=" w-52" />
+            <img loading="lazy" src={playlistIcon} alt="" className=" w-52" />
             Playlists
           </div>
         </div>

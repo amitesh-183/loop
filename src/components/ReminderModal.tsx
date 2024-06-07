@@ -41,7 +41,12 @@ const ReminderModal: React.FC<ReminderModalProps> = ({ isOpen, close }) => {
                     as="h3"
                     className="text-base/7 font-medium text-white flex items-center flex-wrap justify-center"
                   >
-                    <img src={warning} className="w-32 h-20" alt="warning" />
+                    <img
+                      loading="lazy"
+                      src={warning}
+                      className="w-32 h-20"
+                      alt="warning"
+                    />
                     Please Login to get full access!!
                   </DialogTitle>
                   <div

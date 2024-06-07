@@ -83,6 +83,7 @@ const MusicPlayer: React.FC<MusicPlayerProps> = ({
           <div className=" bg-gray-200 bg-opacity-10 w-full backdrop-blur flex flex-col md:gap-4 gap-10 items-center justify-end left-0 md:px-10 h-screen px-4 md:py-4 py-3">
             <div className="">
               <img
+                loading="lazy"
                 src={selectedSong.poster}
                 className="md:w-[800px] md:h-[500px] w-[40px] h-[40px] object-cover rounded-lg"
                 alt={selectedSong.music_name}
@@ -170,6 +171,7 @@ const MusicPlayer: React.FC<MusicPlayerProps> = ({
           <div className=" bg-gray-200 bg-opacity-10 w-full backdrop-blur flex md:gap-4 gap-10 items-center justify-between left-0 md:px-10 px-4 md:py-4 py-3">
             <div className="flex gap-4 items-center md:w-[50%] w-[40%]">
               <img
+                loading="lazy"
                 src={selectedSong.poster}
                 className="md:w-[70px] md:h-[80px] w-[40px] h-[40px] object-cover rounded-lg"
                 alt={selectedSong.music_name}

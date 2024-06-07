@@ -17,21 +17,21 @@ const NewReleases = () => {
             </p>
           </div>
           <div>
-            <img src={newRelease} alt="" className=" w-52" />
+            <img loading="lazy" src={newRelease} alt="" className=" w-52" />
           </div>
         </div>
         <h4 className=" px-4 py-3 text-5xl">Songs</h4>
         <div className=" flex flex-start overflow-x-scroll">
           <div className=" bg-white/10 rounded-lg px-10 py-3 backdrop-blur m-4 text-center">
-            <img src={playlistIcon} alt="" className=" w-52" />
+            <img loading="lazy" src={playlistIcon} alt="" className=" w-52" />
             Playlists
           </div>
           <div className=" bg-white/10 rounded-lg px-10 py-3 backdrop-blur m-4 text-center">
-            <img src={playlistIcon} alt="" className=" w-52" />
+            <img loading="lazy" src={playlistIcon} alt="" className=" w-52" />
             Playlists
           </div>
           <div className=" bg-white/10 rounded-lg px-10 py-3 backdrop-blur m-4 text-center">
-            <img src={playlistIcon} alt="" className=" w-52" />
+            <img loading="lazy" src={playlistIcon} alt="" className=" w-52" />
             Playlists
           </div>
         </div>

@@ -45,12 +45,17 @@ const Modal: React.FC<ReminderModalProps> = ({
                 leaveFrom="opacity-100 transform-[scale(100%)]"
                 leaveTo="opacity-0 transform-[scale(95%)]"
               >
-                <DialogPanel className="w-full max-w-lg rounded-xl bg-gradient-to-b from-purple/15 to-white/5 p-6 backdrop-blur-[5px] border border-purple-400/20 shadow shadow-black">
+                <DialogPanel className="w-full max-w-lg rounded-xl bg-zinc-900/60 p-6 backdrop-blur-[5px] border border-purple-400/20 shadow shadow-black">
                   <DialogTitle
                     as="h3"
                     className="text-base/7 font-medium text-white flex items-center flex-wrap justify-center"
                   >
-                    <img src={src} className={iconStyle} alt="warning" />
+                    <img
+                      loading="lazy"
+                      src={src}
+                      className={iconStyle}
+                      alt="warning"
+                    />
                     {title}
                   </DialogTitle>
                   <div

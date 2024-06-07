@@ -11,11 +11,16 @@ const Error = () => {
               <div className=" max-w-xl rounded-xl bg-gradient-to-b from-purple/10 to-white/5 p-6 backdrop-blur-[4px] border border-purple-400/20 shadow-xl">
                 <div className=" flex justify-center items-center">
                   <span className=" text-[7rem] font-black">4</span>
-                  <img src={character} className=" w-[160px]" alt="" />
+                  <img
+                    loading="lazy"
+                    src={character}
+                    className=" w-[160px]"
+                    alt=""
+                  />
                   <span className=" text-[7rem] font-black">4</span>
                 </div>
                 <h3 className=" text-6xl flex items-center justify-center text-center font-medium text-white">
-                  {/* <img src={warning} className=" w-48" alt="" /> */}
+                  {/* <img loading="lazy" src={warning} className=" w-48" alt="" /> */}
                   Oops!
                 </h3>
                 <p className="mt-2 text-2xl text-white/70 text-center">

@@ -76,6 +76,7 @@ export default function ListItems({ start, end, title }: listProps) {
             <div className="py-3 hover:bg-gradient-to-b from-purple-700/20 to-zinc-700/10 cursor-pointer rounded-lg duration-300 ease-linear md:px-4 px-2">
               <div className=" relative">
                 <img
+                  loading="lazy"
                   src={item.poster}
                   className="md:w-[200px] md:h-[200px] w-[200px] h-[200px] object-cover rounded-lg"
                   alt="img"

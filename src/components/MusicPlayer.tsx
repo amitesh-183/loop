@@ -1,40 +1,66 @@
+import React, { ChangeEvent, useEffect } from "react";
+import { BiChevronsDown } from "react-icons/bi";
 import { FiMaximize2 } from "react-icons/fi";
-import React, { useState, useEffect, useRef } from "react";
 import { FaPause, FaPlay } from "react-icons/fa";
 import { BsPeopleFill } from "react-icons/bs";
 import { CgPlayListAdd } from "react-icons/cg";
 import { AiFillCaretLeft, AiFillCaretRight } from "react-icons/ai";
+import { useMusicPlayer } from "../context/MusicPlayerContext";
+import { useSongList } from "../context/SongListContext";
+import { useAuth } from "../context/UserContext";
 
-interface Song {
-  music_id: number;
-  poster: string;
-  music_name: string;
-  artist: string;
-  music_file: string;
-}
+const MusicPlayer: React.FC = () => {
+  const {
+    selectedSong,
+    isPlaying,
+    currentTime,
+    duration,
+    setDuration,
+    isFullScreen,
+    togglePlayPause,
+    setSelectedSong,
+    handleFullScreenPlayer,
+    setCurrentTime,
+    audioRef,
+  } = useMusicPlayer();
 
-interface MusicPlayerProps {
-  selectedSong: Song;
-  onSongEnd: () => void;
-  onPlayNext: () => void;
-  onPlayPrevious: () => void;
-}
+  const { songList } = useSongList();
+  const { userLogged }: any = useAuth();
 
-const MusicPlayer: React.FC<MusicPlayerProps> = ({
-  selectedSong,
-  onSongEnd,
-  onPlayNext,
-  onPlayPrevious,
-}) => {
-  const [isPlaying, setIsPlaying] = useState<boolean>(false);
-  const [currentTime, setCurrentTime] = useState<number>(0);
-  const [isFullScreen, setIsFullScreen] = useState<boolean>(false);
-  const [duration, setDuration] = useState<number>(0);
-  const audioRef = useRef<HTMLAudioElement>(null);
+  if (!userLogged) {
+    return null;
+  }
 
-  const togglePlayPause = () => {
-    setIsPlaying((prevIsPlaying) => !prevIsPlaying);
-  };
+  if (!selectedSong) {
+    return null;
+  }
+
+  useEffect(() => {
+    const audio = audioRef.current;
+    if (audio) {
+      // Set initial duration
+      const handleLoadedMetadata = () => {
+        if (audio.duration) {
+          setDuration(audio.duration);
+        }
+      };
+
+      // Update current time during playback
+      const handleTimeUpdate = () => {
+        setCurrentTime(audio.currentTime);
+      };
+
+      // Add event listeners
+      audio.addEventListener("loadedmetadata", handleLoadedMetadata);
+      audio.addEventListener("timeupdate", handleTimeUpdate);
+
+      // Clean up event listeners on unmount
+      return () => {
+        audio.removeEventListener("loadedmetadata", handleLoadedMetadata);
+        audio.removeEventListener("timeupdate", handleTimeUpdate);
+      };
+    }
+  }, [audioRef, setCurrentTime, setDuration]);
 
   const formatTime = (timeInSeconds: number) => {
     const minutes = Math.floor(timeInSeconds / 60);
@@ -42,45 +68,42 @@ const MusicPlayer: React.FC<MusicPlayerProps> = ({
     return `${minutes}:${seconds < 10 ? "0" : ""}${seconds}`;
   };
 
-  const handleFullScreenPlayer = () => {
-    setIsFullScreen((prevIsFullScreen) => !prevIsFullScreen);
+  const handleSliderChange = (event: ChangeEvent<HTMLInputElement>) => {
+    const newTime = parseFloat(event.target.value);
+    setCurrentTime(newTime);
+    if (audioRef.current) {
+      audioRef.current.currentTime = newTime;
+    }
   };
 
-  useEffect(() => {
-    if (isPlaying && audioRef.current) {
-      audioRef.current.play();
-    } else if (audioRef.current) {
-      audioRef.current.pause();
-    }
-  }, [isPlaying, formatTime]);
+  const handleNextSong = () => {
+    const currentIndex = songList.findIndex(
+      (song) => song.music_id === selectedSong.music_id
+    );
+    const nextIndex = (currentIndex + 1) % songList.length;
+    setSelectedSong(songList[nextIndex]);
+  };
 
-  useEffect(() => {
-    // Start playing the audio when a new song is selected
-    setIsPlaying(true);
-  }, [selectedSong]); // Trigger when selectedSong changes
-
-  useEffect(() => {
-    const updateTime = () => {
-      if (audioRef.current) {
-        setCurrentTime(audioRef.current.currentTime);
-        setDuration(audioRef.current.duration);
-      }
-    };
-
-    if (audioRef.current) {
-      audioRef.current.addEventListener("timeupdate", updateTime);
-
-      return () => {
-        audioRef.current?.removeEventListener("timeupdate", updateTime);
-      };
-    }
-  }, []);
+  const handlePreviousSong = () => {
+    const currentIndex = songList.findIndex(
+      (song) => song.music_id === selectedSong.music_id
+    );
+    const prevIndex = (currentIndex - 1 + songList.length) % songList.length;
+    setSelectedSong(songList[prevIndex]);
+  };
 
   return (
     <>
       {isFullScreen ? (
-        <div className="music-player absolute inset-0 h-screen w-full mx-auto">
-          <div className=" bg-gray-200 bg-opacity-10 w-full backdrop-blur flex flex-col md:gap-4 gap-10 items-center justify-end left-0 md:px-10 h-screen px-4 md:py-4 py-3">
+        <div className="music-player absolute inset-0 w-full mx-auto">
+          <div className=" bg-gray-700 bg-opacity-10 w-full backdrop-blur flex flex-col md:gap-4 gap-10 items-center justify-end left-0 md:px-10 h-screen px-4 md:py-4 py-3">
+            <button
+              title="minimize"
+              className="absolute left-20 top-20"
+              onClick={handleFullScreenPlayer}
+            >
+              <BiChevronsDown className="w-10 h-10 hover:translate-y-3 duration-500 ease-in-out" />
+            </button>
             <div className="">
               <img
                 loading="lazy"
@@ -96,31 +119,34 @@ const MusicPlayer: React.FC<MusicPlayerProps> = ({
                   {selectedSong.artist}
                 </p>
               </div>
-              <audio
-                src={selectedSong.music_file}
-                ref={audioRef}
-                onEnded={onSongEnd}
-              ></audio>
             </div>
             <div className=" flex items-center justify-between w-full">
               <div>{formatTime(currentTime)}</div>
               <div>{formatTime(duration)}</div>
             </div>
-            <div className=" relative w-full">
-              <div className="absolute z-20 md:h-2 h-1 w-full rounded-lg bg-gray-400 bg-opacity-5 text-center text-white text-xs">
-                {/* {formatTime(currentTime)} / {formatTime(duration)} */}
-              </div>
-              <div
-                style={{ width: `${(currentTime / duration) * 100}%` }}
-                className={`absolute z-20 md:h-2 h-1 rounded-lg bg-gradient-to-r from-blue-400 to-purple-500 text-center shadow-2xl shadow-blue-600 text-white text-xs`}
-              ></div>
+            <div className="relative w-full">
+              <input
+                type="range"
+                min="0"
+                max={duration || 0}
+                value={currentTime}
+                onChange={handleSliderChange}
+                className="w-full h-2 bg-gray-400 bg-opacity-5 rounded-lg appearance-none cursor-pointer"
+                style={{
+                  background: `linear-gradient(to right, #4a90e2 0%, #9013fe ${
+                    duration ? (currentTime / duration) * 100 : 0
+                  }%, #d3d3d3 ${
+                    duration ? (currentTime / duration) * 100 : 0
+                  }%, #d3d3d3 100%)`,
+                }}
+              />
             </div>
             <div className=" flex items-center justify-between w-full">
               <div></div>
               <div className="flex items-center md:gap-6 gap-2">
                 <div
                   className="hover:bg-gray-100 hover:bg-opacity-5 rounded-full p-2"
-                  onClick={onPlayPrevious}
+                  onClick={handlePreviousSong}
                 >
                   <AiFillCaretLeft className="md:text-3xl text-lg" />
                 </div>
@@ -141,7 +167,7 @@ const MusicPlayer: React.FC<MusicPlayerProps> = ({
                 )}
                 <div
                   className="hover:bg-gray-100 hover:bg-opacity-5 rounded-full p-2"
-                  onClick={onPlayNext}
+                  onClick={handleNextSong}
                 >
                   <AiFillCaretRight className="md:text-3xl text-lg" />
                 </div>
@@ -158,54 +184,57 @@ const MusicPlayer: React.FC<MusicPlayerProps> = ({
           </div>
         </div>
       ) : (
-        <div className="music-player absolute bottom-0 w-full left-0">
-          <div className=" relative">
-            <div className="absolute z-20 md:h-2 h-1 w-full rounded-lg bg-gray-400 bg-opacity-5 text-center text-white text-xs">
-              {/* {formatTime(currentTime)} / {formatTime(duration)} */}
-            </div>
-            <div
-              style={{ width: `${(currentTime / duration) * 100}%` }}
-              className={`absolute z-20 md:h-2 h-1 rounded-lg bg-gradient-to-r from-blue-400 to-purple-500 text-center shadow-2xl shadow-blue-600 text-white text-xs`}
-            ></div>
+        <div className="music-player fixed md:bottom-0 bottom-12 w-full left-0">
+          <div className="relative">
+            <input
+              type="range"
+              min="0"
+              max={duration | 0}
+              value={currentTime}
+              onChange={handleSliderChange}
+              className="w-full h-2 bg-gray-400/20 rounded-lg absolute top-0 z-20 appearance-none cursor-pointer"
+              style={{
+                background: `linear-gradient(to right, #4a90e2 0%, #9013fe ${
+                  duration ? (currentTime / duration) * 100 : 0
+                }%, #cccccc2e ${
+                  duration ? (currentTime / duration) * 100 : 0
+                }%, #cccccc2e 100%)`,
+              }}
+            />
           </div>
           <div className=" bg-gray-200 bg-opacity-10 w-full backdrop-blur flex md:gap-4 gap-10 items-center justify-between left-0 md:px-10 px-4 md:py-4 py-3">
             <div className="flex gap-4 items-center md:w-[50%] w-[40%]">
               <img
                 loading="lazy"
                 src={selectedSong.poster}
-                className="md:w-[70px] md:h-[80px] w-[40px] h-[40px] object-cover rounded-lg"
+                className="md:w-[60px] md:h-[60px] w-[40px] h-[40px] object-cover rounded-lg"
                 alt={selectedSong.music_name}
               />
               <div>
-                <h3 className="md:text-xl sm:text-base text-sm text-nowrap">
+                <h3 className="md:text-lg sm:text-base text-sm text-nowrap">
                   {selectedSong.music_name}
                 </h3>
-                <p className="md:text-lg sm:text-sm text-xs text-nowrap text-ellipsis overflow-hidden w-20">
+                <p className="md:text-md text-gray-500/60 capitalize sm:text-sm text-xs text-nowrap text-ellipsis overflow-hidden w-full">
                   {selectedSong.artist}
                 </p>
-                <div className="md:block hidden text-white sm:text-base text-sm">
+                <div className="md:block hidden text-white sm:text-sm text-xs">
                   {formatTime(currentTime)} / {formatTime(duration)}
                 </div>
               </div>
-              <audio
-                src={selectedSong.music_file}
-                ref={audioRef}
-                onEnded={onSongEnd}
-              ></audio>
             </div>
             <div className="flex items-center md:gap-6 gap-2 md:w-[40%] w-[40%]">
               <div
                 className="hover:bg-gray-100 hover:bg-opacity-5 rounded-full p-2"
-                onClick={onPlayPrevious}
+                onClick={handlePreviousSong}
               >
-                <AiFillCaretLeft className="md:text-3xl text-lg" />
+                <AiFillCaretLeft className="md:text-2xl text-lg" />
               </div>
               {isPlaying ? (
                 <div
                   className="hover:bg-gray-100 hover:bg-opacity-5 rounded-full p-4"
                   onClick={togglePlayPause}
                 >
-                  <FaPause className="md:text-2xl text-lg" />
+                  <FaPause className="md:text-xl text-lg" />
                 </div>
               ) : (
                 <div
@@ -217,16 +246,16 @@ const MusicPlayer: React.FC<MusicPlayerProps> = ({
               )}
               <div
                 className="hover:bg-gray-100 hover:bg-opacity-5 rounded-full p-2"
-                onClick={onPlayNext}
+                onClick={handleNextSong}
               >
-                <AiFillCaretRight className="md:text-3xl text-lg" />
+                <AiFillCaretRight className="md:text-2xl text-lg" />
               </div>
             </div>
             <div className="md:flex hidden items-center gap-4 md:w-[10%]">
-              <CgPlayListAdd className="text-4xl" />
-              <BsPeopleFill className="text-3xl" />
+              <CgPlayListAdd className="text-2xl" />
+              <BsPeopleFill className="text-xl" />
               <FiMaximize2
-                className="text-2xl"
+                className="text-xl"
                 onClick={handleFullScreenPlayer}
               />
             </div>

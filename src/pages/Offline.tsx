@@ -9,6 +9,7 @@ import { useRef, useState } from "react";
 import { GrClose } from "react-icons/gr";
 import MobileHeader from "../components/MobileHeader";
 import useAudio from "../hooks/useAudio";
+// import MusicPlayer from "../components/MusicPlayer";
 
 const Offline = () => {
   const posterInputRef = useRef<HTMLInputElement | null>(null);
@@ -22,6 +23,7 @@ const Offline = () => {
   } = useAudio();
 
   const [selectedFile, setSelectedFile] = useState<File | null>(null);
+  const [isUploadActive, setIsUploadActive] = useState(false);
   const [songDetails, setSongDetails] = useState({
     title: "",
     artist: "",
@@ -84,12 +86,26 @@ const Offline = () => {
           <div>
             <h2 className="font-bold text-3xl">Enjoy your local music</h2>
             <p className="text-gray-50/40 mt-3 text-xl">Your Local on demand</p>
+            {!isUploadActive && (
+              <button
+                className="bg-purple-600 text-white py-2 mt-4 px-20 rounded-lg"
+                onClick={() => setIsUploadActive(true)}
+              >
+                Upload
+              </button>
+            )}
           </div>
           <div>
             <img loading="lazy" src={local} alt="Local" className="w-52" />
           </div>
         </div>
-        <div className="bg-white/10 rounded-lg px-10 py-3 backdrop-blur m-4">
+        <div
+          className={`bg-white/10 ${
+            isUploadActive
+              ? "opacity-100 translate-y-0 relative py-3 m-4 duration-500 ease-linear"
+              : "opacity-0 -translate-y-20 h-0 py-0 duration-500 ease-linear"
+          } rounded-lg px-10 backdrop-blur`}
+        >
           <div className="flex justify-between sm:flex-row flex-col gap-4">
             <div className="sm:w-1/2 w-full">
               <h2 className="text-2xl font-black">
@@ -192,7 +208,13 @@ const Offline = () => {
               </div>
             </div>
           </div>
-          <div className="flex justify-center">
+          <div className="flex justify-center gap-4">
+            <div
+              onClick={() => setIsUploadActive(false)}
+              className="bg-slate-700/40 text-white py-2 px-20 rounded-lg cursor-pointer"
+            >
+              Cancel
+            </div>
             <div
               onClick={handleUploadClick}
               className="bg-purple-600 text-white py-2 px-20 rounded-lg cursor-pointer"
@@ -252,7 +274,10 @@ const Offline = () => {
                       <BsFillPlayFill size={30} />
                     )}
                   </button>
-                  <button onClick={() => handleDelete(song.lastModified)}>
+                  <button
+                    title="delete"
+                    onClick={() => handleDelete(song.lastModified)}
+                  >
                     <AiFillDelete size={23} />
                   </button>
                 </div>
@@ -261,6 +286,12 @@ const Offline = () => {
           </ul>
         )}
       </div>
+      {/* <MusicPlayer
+        selectedSong={selectedSong}
+        onSongEnd={handleSongEnd}
+        onPlayNext={playNextSong}
+        onPlayPrevious={playPreviousSong}
+      /> */}
     </>
   );
 };

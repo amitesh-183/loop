@@ -36,7 +36,7 @@ const ReminderModal: React.FC<ReminderModalProps> = ({ isOpen, close }) => {
                 leaveFrom="opacity-100 transform-[scale(100%)]"
                 leaveTo="opacity-0 transform-[scale(95%)]"
               >
-                <DialogPanel className="w-full max-w-md rounded-xl bg-gradient-to-b from-purple/15 to-white/5 p-6 backdrop-blur-[5px] border border-purple-400/20 shadow shadow-black">
+                <DialogPanel className="w-full max-w-md rounded-xl bg-gradient-to-b from-purple-900/30 to-black/90 p-6 backdrop-blur-[5px] border border-purple-200/40 shadow-md shadow-black">
                   <DialogTitle
                     as="h3"
                     className="text-base/7 font-medium text-white flex items-center flex-wrap justify-center"

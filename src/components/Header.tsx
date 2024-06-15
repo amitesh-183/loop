@@ -61,12 +61,10 @@ export default function Header({ className }: HeaderProps) {
   useEffect(() => {
     // console.log(userLogged);
   }, [userLogged]);
-
-  console.log(showMenu);
   return (
     <>
-      <div className="sm:hidden absolute bottom-0 px-4 flex justify-center w-full z-20">
-        <ul className=" flex w-[290px] h-[50px] px-4 justify-around items-center py-1 rounded-full bg-black/40 border backdrop-blur">
+      <div className="sm:hidden absolute bottom-0 flex justify-center w-full z-20">
+        <ul className=" flex w-full h-[50px] justify-around items-center py-1 bg-black/40 backdrop-blur">
           <Link to={"/"} onClick={() => setActiveNav("/")}>
             {activeNav === "/" ? (
               <div className="flex justify-center flex-col items-center">

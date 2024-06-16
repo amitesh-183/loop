@@ -177,7 +177,7 @@ const MusicPlayer: React.FC = () => {
           </div>
         </div>
       ) : (
-        <div className="music-player fixed md:bottom-0 bottom-12 w-full left-0">
+        <div className="music-player fixed md:bottom-0 bottom-12 z-40 w-full left-0">
           <div className="relative">
             <input
               type="range"

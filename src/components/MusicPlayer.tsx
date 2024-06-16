@@ -88,7 +88,7 @@ const MusicPlayer: React.FC = () => {
   return (
     <>
       {isFullScreen ? (
-        <div className="music-player absolute inset-0 w-full mx-auto">
+        <div className="music-player absolute inset-0 w-full z-30 mx-auto">
           <div className=" bg-gray-700 bg-opacity-10 w-full backdrop-blur flex flex-col md:gap-4 gap-10 items-center justify-end left-0 md:px-10 h-screen px-4 md:py-4 py-3">
             <button
               title="minimize"
@@ -100,7 +100,7 @@ const MusicPlayer: React.FC = () => {
             <div className="">
               <img
                 loading="lazy"
-                src={selectedSong.poster}
+                src={selectedSong.wide_Poster}
                 className="md:w-[800px] md:h-[500px] w-[40px] h-[40px] object-cover rounded-lg"
                 alt={selectedSong.music_name}
               />

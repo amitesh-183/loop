@@ -7,6 +7,8 @@ interface Song {
   music_name: string;
   artist: string;
   music_file: string;
+  wide_Poster?: string;
+  mood?: string;
 }
 
 interface SongListContextProps {

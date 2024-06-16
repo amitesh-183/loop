@@ -2,6 +2,7 @@ import React from "react";
 import { useSongList } from "../context/SongListContext";
 import { useMusicPlayer } from "../context/MusicPlayerContext";
 import { useAuth } from "../context/UserContext";
+import noImg from "../assets/images/no-img.webp";
 
 interface listProps {
   title?: string;
@@ -39,7 +40,7 @@ const ListItems: React.FC<listProps> = ({ start, end, title }) => {
               <div className="relative">
                 <img
                   loading="lazy"
-                  src={item.poster}
+                  src={item.poster || noImg}
                   className="md:w-[200px] md:h-[200px] w-[200px] h-[200px] object-cover rounded-lg"
                   alt="img"
                 />

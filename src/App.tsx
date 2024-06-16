@@ -23,6 +23,7 @@ import LoopOriginals from "./pages/LoopOriginals.tsx";
 import NewReleases from "./pages/NewReleases.tsx";
 import Music from "./pages/Music.tsx";
 import Explore from "./pages/Explore.tsx";
+import Settings from "./pages/Settings.tsx";
 // import Footer from "./components/Footer.tsx";
 // import Navbar from "./components/Navbar.tsx";
 
@@ -49,6 +50,7 @@ const App = () => {
               <Route path="/loop-originals" element={<LoopOriginals />} />
               <Route path="/explore" element={<Explore />} />
               <Route path="/music" element={<Music />} />
+              <Route path="/settings" element={<Settings />} />
             </Routes>
           </Router>
         </Suspense>

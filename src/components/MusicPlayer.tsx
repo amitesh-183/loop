@@ -7,7 +7,6 @@ import { CgPlayListAdd } from "react-icons/cg";
 import { AiFillCaretLeft, AiFillCaretRight } from "react-icons/ai";
 import { useMusicPlayer } from "../context/MusicPlayerContext";
 import { useSongList } from "../context/SongListContext";
-import { useAuth } from "../context/UserContext";
 
 const MusicPlayer: React.FC = () => {
   const {
@@ -25,11 +24,6 @@ const MusicPlayer: React.FC = () => {
   } = useMusicPlayer();
 
   const { songList } = useSongList();
-  const { userLogged }: any = useAuth();
-
-  if (!userLogged) {
-    return null;
-  }
 
   if (!selectedSong) {
     return null;
@@ -53,7 +47,6 @@ const MusicPlayer: React.FC = () => {
       // Add event listeners
       audio.addEventListener("loadedmetadata", handleLoadedMetadata);
       audio.addEventListener("timeupdate", handleTimeUpdate);
-
       // Clean up event listeners on unmount
       return () => {
         audio.removeEventListener("loadedmetadata", handleLoadedMetadata);

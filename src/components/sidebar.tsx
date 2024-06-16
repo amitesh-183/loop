@@ -67,13 +67,13 @@ export default function Sidebar({ hidden }: sidebarProps) {
   ];
 
   return (
-    <div className="flex h-full sticky top-0">
+    <div className="flex h-full sticky z-30 top-0">
       <div
         className={` min-w-[270px] w-auto ${
           hidden ? hidden : "hidden bg-black p-2"
-        }  md:flex max-w-[600px]  h-screen flex-col gap-y-2`}
+        }  md:flex max-w-[600px] h-screen flex-col gap-y-2`}
       >
-        <Box className="overflow-y-auto h-full bg-gradient-to-b from-purple-800/30 to-neutral-950 rounded-lg">
+        <Box className="overflow-y-auto h-full bg-gradient-to-b from-purple-800/30 to-neutral-950 sm:rounded-lg">
           {/* <Link to={"/"} className="flex justify-center items-center gap-2">
             <div className="text-3xl py-6 font-bold text-center">L</div>
             <img loading="lazy" src={loop} alt="loop-logo" className=" w-14" />

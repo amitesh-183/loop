@@ -1,6 +1,7 @@
 import React from "react";
 import { useSongList } from "../context/SongListContext";
 import { useMusicPlayer } from "../context/MusicPlayerContext";
+import { useAuth } from "../context/UserContext";
 
 interface listProps {
   title?: string;
@@ -10,13 +11,16 @@ interface listProps {
 
 const ListItems: React.FC<listProps> = ({ start, end, title }) => {
   const { songList } = useSongList();
+  const { userLogged }: any = useAuth();
   const { setSelectedSong, setCurrentTime } = useMusicPlayer();
 
   const handleSongClick = (index: number) => {
-    const selectedSong = songList.find((song) => song.music_id === index);
-    if (selectedSong) {
-      setSelectedSong(selectedSong);
-      setCurrentTime(0);
+    if (userLogged) {
+      const selectedSong = songList.find((song) => song.music_id === index);
+      if (selectedSong) {
+        setSelectedSong(selectedSong);
+        setCurrentTime(0);
+      }
     }
   };
 

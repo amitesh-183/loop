@@ -37,6 +37,7 @@ const MusicPlayerContext = createContext<MusicPlayerContextProps | undefined>(
 
 export const useMusicPlayer = () => {
   const context = useContext(MusicPlayerContext);
+
   if (!context) {
     throw new Error("useMusicPlayer must be used within a MusicPlayerProvider");
   }

@@ -171,9 +171,9 @@ export default function Header({ className }: HeaderProps) {
       {showMenu && (
         <div>
           <Sidebar hidden={"block absolute z-30 bg-black"} />
-          <div className="absolute bottom-6 z-30 bg-white text-black px-14 py-1 rounded-lg mx-6">
+          {/* <div className="absolute top-0 z-30 bg-white text-black px-14 py-1 rounded-lg mx-6">
             Logout
-          </div>
+          </div> */}
         </div>
       )}
       <div className={twMerge(`h-fit py-3 px-4`, className)}>
@@ -253,25 +253,28 @@ export default function Header({ className }: HeaderProps) {
                       anchor="bottom end"
                       className="w-52 origin-top-right rounded-xl border border-white/5 bg-purple-600/30 backdrop-blur-sm p-1 text-sm/6 text-white [--anchor-gap:var(--spacing-1)] focus:outline-none"
                     >
-                      <MenuItem>
+                      {/* <MenuItem>
                         <button className="group flex w-full items-center gap-2 rounded-lg py-1.5 px-3 data-[focus]:bg-white/10">
                           <CgProfile className="size-4 fill-white/30" />
                           Profile
                         </button>
-                      </MenuItem>
+                      </MenuItem> */}
                       <MenuItem>
-                        <button className="group flex w-full items-center gap-2 rounded-lg py-1.5 px-3 data-[focus]:bg-white/10">
+                        <Link
+                          to={"/settings"}
+                          className="group flex w-full items-center gap-2 rounded-lg py-1.5 px-3 data-[focus]:bg-white/10"
+                        >
                           <AiOutlineSetting className="size-4 fill-white/80" />
                           Settings
-                        </button>
+                        </Link>
                       </MenuItem>
                       <div className="my-1 h-px bg-white/5" />
-                      <MenuItem>
+                      {/* <MenuItem>
                         <button className="group flex w-full items-center gap-2 rounded-lg py-1.5 px-3 data-[focus]:bg-white/10">
                           <MdLightMode className="size-4 fill-white/80" />
                           theme
                         </button>
-                      </MenuItem>
+                      </MenuItem> */}
                       <MenuItem>
                         <button
                           className="group flex w-full items-center gap-2 rounded-lg py-1.5 px-3 data-[focus]:bg-white/10"
@@ -289,7 +292,6 @@ export default function Header({ className }: HeaderProps) {
                 className="md:hidden block"
                 onClick={() => {
                   setShowMenu(!showMenu);
-                  console.log("first click");
                 }}
               >
                 {showMenu ? (

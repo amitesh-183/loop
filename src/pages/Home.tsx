@@ -4,13 +4,15 @@ import ListItems from "../components/ListItems";
 import Sidebar from "../components/sidebar";
 import ReminderModal from "../components/ReminderModal";
 import { useAuth } from "../context/UserContext";
-// import RightBar from "../components/RightBar";
+import RightBar from "../components/RightBar";
+import { useCommunity } from "../context/Community";
 // import HeroCarousel from "../components/HeroCarousel";
 // import Explore from "../components/Music/Explore";
 
 export default function Home() {
   const [isOpen, setIsOpen] = useState(false);
   const { userLogged }: any = useAuth();
+  const { showCommunity }: any = useCommunity();
 
   function open() {
     setIsOpen(true);
@@ -61,7 +63,7 @@ export default function Home() {
           )}
         </div>
       </div>
-      {/* <RightBar /> */}
+      {showCommunity && <RightBar />}
     </>
   );
 }

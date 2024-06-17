@@ -7,6 +7,7 @@ import { CgPlayListAdd } from "react-icons/cg";
 import { AiFillCaretLeft, AiFillCaretRight } from "react-icons/ai";
 import { useMusicPlayer } from "../context/MusicPlayerContext";
 import { useSongList } from "../context/SongListContext";
+import { useCommunity } from "../context/Community";
 
 const MusicPlayer: React.FC = () => {
   const {
@@ -24,6 +25,7 @@ const MusicPlayer: React.FC = () => {
   } = useMusicPlayer();
 
   const { songList } = useSongList();
+  const { showCommunity, setShowCommunity } = useCommunity();
 
   if (!selectedSong) {
     return null;
@@ -128,9 +130,9 @@ const MusicPlayer: React.FC = () => {
                 style={{
                   background: `linear-gradient(to right, #4a90e2 0%, #9013fe ${
                     duration ? (currentTime / duration) * 100 : 0
-                  }%, #d3d3d3 ${
+                  }%, #cccccc2e ${
                     duration ? (currentTime / duration) * 100 : 0
-                  }%, #d3d3d3 100%)`,
+                  }%, #cccccc2e 100%)`,
                 }}
               />
             </div>
@@ -167,7 +169,12 @@ const MusicPlayer: React.FC = () => {
               </div>
               <div className="md:flex hidden items-center gap-4">
                 <CgPlayListAdd className="text-4xl" />
-                <BsPeopleFill className="text-3xl" />
+                <button
+                  title="community"
+                  onClick={() => setShowCommunity(!showCommunity)}
+                >
+                  <BsPeopleFill className="text-3xl" />
+                </button>
                 <FiMaximize2
                   className="text-2xl"
                   onClick={handleFullScreenPlayer}
@@ -246,7 +253,12 @@ const MusicPlayer: React.FC = () => {
             </div>
             <div className="md:flex hidden items-center gap-4 md:w-[10%]">
               <CgPlayListAdd className="text-2xl" />
-              <BsPeopleFill className="text-xl" />
+              <button
+                title="community"
+                onClick={() => setShowCommunity(!showCommunity)}
+              >
+                <BsPeopleFill className="text-xl" />
+              </button>
               <FiMaximize2
                 className="text-xl"
                 onClick={handleFullScreenPlayer}

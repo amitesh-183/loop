@@ -7,17 +7,20 @@ import { UserProvider } from "./context/UserContext.tsx";
 import { MusicPlayerProvider } from "./context/MusicPlayerContext.tsx";
 import MusicPlayer from "./components/MusicPlayer.tsx";
 import { SongListProvider } from "./context/SongListContext.tsx";
+import { CommunityProvider } from "./context/Community.tsx";
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
     <Toaster reverseOrder={false} position="top-center" />
     <UserProvider>
-      <MusicPlayerProvider>
-        <SongListProvider>
-          <App />
-          <MusicPlayer />
-        </SongListProvider>
-      </MusicPlayerProvider>
+      <CommunityProvider>
+        <MusicPlayerProvider>
+          <SongListProvider>
+            <App />
+            <MusicPlayer />
+          </SongListProvider>
+        </MusicPlayerProvider>
+      </CommunityProvider>
     </UserProvider>
   </React.StrictMode>
 );

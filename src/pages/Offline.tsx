@@ -183,7 +183,7 @@ const Offline = () => {
                   <input
                     ref={posterInputRef}
                     type="file"
-                    accept="image/*"
+                    accept="image/mp4"
                     className="hidden"
                     placeholder="poster..."
                     onChange={handlePosterChange}
